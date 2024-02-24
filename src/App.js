@@ -4,8 +4,12 @@ import './App.css';
 
 function App() {
   const [data, setData] = useState({ value: '', matplotlib_image: '', bokeh_image: '' });
+  const [showBokeh, setShowBokeh] = useState(false); 
 
-
+  function toggleChart() {
+    setShowBokeh(!showBokeh); 
+  }
+  
   useEffect(() => {
     fetch('/data/data.json', {
       headers : { 
@@ -20,23 +24,30 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <div className="logo">Stocky Stock</div>
-
+        <div className="logo">Stocky Stocks</div>
         <p>{data.value}</p>
-        {/* Update the image src to point to the public URL */}
-        {/* <img src={`${process.env.PUBLIC_URL}/data/images/${data.matplotlib_image}`} alt="Display"   className="responsive-image"/>  */}
-        {/* Embed the Bokeh chart using an object tag */}
-        <object
-  data={`${process.env.PUBLIC_URL}/data/images/${data.bokeh_image}`}
-  type="text/html"
-  style={{ width: "100%", height: "500px", display: "block", margin: "0 auto" }}
-  aria-label="Interactive chart displaying stock price data">
-    <p>Interactive chart displaying stock price data. Your browser does not support this chart.</p>
-</object>
+        <button onClick={toggleChart}>
+          Show {showBokeh ? 'Matplotlib Image' : 'Bokeh Chart'}
+        </button>
+        {showBokeh ? (
+          <object
+            data={`${process.env.PUBLIC_URL}/data/images/${data.bokeh_image}`}
+            type="text/html"
+            style={{ width: "100%", height: "500px", display: "block", margin: "0 auto" }}
+            aria-label="Interactive Bokeh chart displaying stock price data">
+              <p>Interactive Bokeh chart not supported by your browser.</p>
+          </object>
+        ) : (
+          <img
+            src={`${process.env.PUBLIC_URL}/data/images/${data.matplotlib_image}`}
+            alt="Matplotlib Display"
+            className="responsive-image"
+          />
+        )}
       </header>
     </div>
   );
+  
 }
 
 export default App;
