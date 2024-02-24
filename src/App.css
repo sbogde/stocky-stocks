@@ -1,3 +1,11 @@
+.logo {
+  font-size: 1.5em; /* Adjust the size as needed */
+  font-weight: bold;
+  color: #9bcd9b; /* A shade of green, feel free to choose your own color */
+  margin-bottom: 20px; /* Adds some space below the logo */
+}
+
+
 .App {
   text-align: center;
 }

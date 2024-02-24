@@ -19,7 +19,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <div className="logo">Stocky Stock</div>
 
         <p>{data.value}</p>
         {/* Update the image src to point to the public URL */}
