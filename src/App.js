@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState({ value: '' });
+  const [data, setData] = useState({ value: '', image: '' });
 
   useEffect(() => {
     fetch('/data/data.json', {
@@ -23,7 +23,7 @@ function App() {
 
         <p>{data.value}</p>
         {/* Update the image src to point to the public URL */}
-        <img src={`${process.env.PUBLIC_URL}/data/placeholder.png`} alt="Display" />
+        <img src={`${process.env.PUBLIC_URL}/data/images/${data.image}`} alt="Display" /> 
       </header>
     </div>
   );
