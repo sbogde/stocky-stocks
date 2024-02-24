@@ -11,6 +11,14 @@
   max-width: 100%; /* Ensures the image does not stretch beyond its original width */
 }
 
+object {
+  display: block;  
+  margin: 0 auto;  
+  height: 500px;  
+  width: 90%; 
+  /* border: 1px solid red; */
+}
+
 
 .App {
   text-align: center;

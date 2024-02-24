@@ -25,7 +25,12 @@ function App() {
 
         <p>{data.value}</p>
         {/* Update the image src to point to the public URL */}
-        <img src={`${process.env.PUBLIC_URL}/data/images/${data.matplotlib_image}`} alt="Display"   className="responsive-image"/> 
+        {/* <img src={`${process.env.PUBLIC_URL}/data/images/${data.matplotlib_image}`} alt="Display"   className="responsive-image"/>  */}
+        {/* Embed the Bokeh chart using an object tag */}
+        <object
+          data={`${process.env.PUBLIC_URL}/data/images/${data.bokeh_image}`}
+          type="text/html"
+        ></object>
       </header>
     </div>
   );
