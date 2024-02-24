@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import data from './data.json';
+import image from './placeholder.png'; 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
@@ -16,7 +18,10 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
+        
+        <p>{data.value}</p>
+        <img src={image} alt="Display" />
       </header>
     </div>
   );
