@@ -1,7 +1,30 @@
 import json
 import random
 import os
+import subprocess
+from datetime import datetime
+
 import matplotlib.pyplot as plt
+
+def run_git_command(command):
+    """Runs a git command and returns its output"""
+    try:
+        output = subprocess.check_output(["git"] + command, stderr=subprocess.STDOUT)
+        print(output.decode())
+    except subprocess.CalledProcessError as e:
+        print(f"Error running git command {' '.join(command)}:\n{e.output.decode()}")
+
+def git_commit_and_push(filename, json_path):
+    """Commit and push changes to Git."""
+    # Format the current timestamp
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    commit_message = f"Update data and image: {timestamp}"
+    
+    # Run Git commands
+    run_git_command(["add", json_path])
+    run_git_command(["add", filename])
+    run_git_command(["commit", "-m", commit_message])
+    run_git_command(["push"])
 
 def generate_random_stock_prices(length=100):
     """Generate a list of random stock prices for plotting."""
@@ -60,5 +83,11 @@ def update_json_value(image_filename):
 
 
 if __name__ == "__main__":
-    image_filename = "random_stock_chart.png" # You can include a timestamp to make filenames unique
+    image_filename = "random_stock_chart.png"  
+    json_path = 'public/data/data.json'  
+    image_path = os.path.join('public', 'data', 'images', image_filename)  
+    
     update_json_value(image_filename)
+
+    # Call the function to commit and push changes
+    # git_commit_and_push(image_path, json_path)
