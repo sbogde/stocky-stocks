@@ -24,7 +24,7 @@ function App() {
 
         <p>{data.value}</p>
         {/* Update the image src to point to the public URL */}
-        <img src={`${process.env.PUBLIC_URL}/data/images/${data.image}`} alt="Display" /> 
+        <img src={`${process.env.PUBLIC_URL}/data/images/${data.image}`} alt="Display"   className="responsive-image"/> 
       </header>
     </div>
   );
