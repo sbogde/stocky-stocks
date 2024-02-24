@@ -28,9 +28,12 @@ function App() {
         {/* <img src={`${process.env.PUBLIC_URL}/data/images/${data.matplotlib_image}`} alt="Display"   className="responsive-image"/>  */}
         {/* Embed the Bokeh chart using an object tag */}
         <object
-          data={`${process.env.PUBLIC_URL}/data/images/${data.bokeh_image}`}
-          type="text/html"
-        ></object>
+  data={`${process.env.PUBLIC_URL}/data/images/${data.bokeh_image}`}
+  type="text/html"
+  style={{ width: "100%", height: "500px", display: "block", margin: "0 auto" }}
+  aria-label="Interactive chart displaying stock price data">
+    <p>Interactive chart displaying stock price data. Your browser does not support this chart.</p>
+</object>
       </header>
     </div>
   );
