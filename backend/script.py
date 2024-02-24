@@ -3,8 +3,14 @@ import random
 import os
 import subprocess
 from datetime import datetime
-
 import matplotlib.pyplot as plt
+
+
+
+def get_formatted_timestamp(format_str="%Y%m%d-%H%M%S"):
+    """Returns a formatted timestamp string."""
+    return datetime.now().strftime(format_str)
+
 
 def run_git_command(command):
     """Runs a git command and returns its output"""
@@ -14,17 +20,19 @@ def run_git_command(command):
     except subprocess.CalledProcessError as e:
         print(f"Error running git command {' '.join(command)}:\n{e.output.decode()}")
 
-def git_commit_and_push(filename, json_path):
-    """Commit and push changes to Git."""
-    # Format the current timestamp
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+def git_commit_and_push():
+    """Commit and push all changes to Git."""
+    timestamp = get_formatted_timestamp("%Y-%m-%d %H:%M:%S")
     commit_message = f"Update data and image: {timestamp}"
     
-    # Run Git commands
-    run_git_command(["add", json_path])
-    run_git_command(["add", filename])
+    # Run Git command to add all changes
+    run_git_command(["add", "."])
+    
+    # Commit and push
     run_git_command(["commit", "-m", commit_message])
     run_git_command(["push"])
+
 
 def generate_random_stock_prices(length=100):
     """Generate a list of random stock prices for plotting."""
@@ -34,6 +42,7 @@ def generate_random_stock_prices(length=100):
         change = random.uniform(-5, 5)
         prices[i] = prices[i-1] + change
     return prices
+
 
 def save_stock_chart(prices, value, filename="stock_price.png"):
     """Save the stock prices chart to a file, marking the 'value' with a red circle."""
@@ -52,7 +61,6 @@ def save_stock_chart(prices, value, filename="stock_price.png"):
     plt.legend()
     plt.savefig(filename)
     plt.close()
-
 
 
 def update_json_value(image_filename):
@@ -81,13 +89,10 @@ def update_json_value(image_filename):
         json.dump(data, file, indent=4)
 
 
-
 if __name__ == "__main__":
-    image_filename = "random_stock_chart.png"  
-    json_path = 'public/data/data.json'  
+    image_filename = f"random_stock_chart_{get_formatted_timestamp()}.png"
     image_path = os.path.join('public', 'data', 'images', image_filename)  
-    
     update_json_value(image_filename)
 
     # Call the function to commit and push changes
-    # git_commit_and_push(image_path, json_path)
+    git_commit_and_push()
