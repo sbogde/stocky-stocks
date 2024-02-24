@@ -1,4 +1,5 @@
 {
-    "value": "412.27",
-    "image": "random_stock_chart_20240224-152610.png"
+    "value": "140.24",
+    "matplotlib_image": "random_stock_chart_20240224-155625.png",
+    "bokeh_image": "bokeh_stock_chart_20240224-155625.html"
 }

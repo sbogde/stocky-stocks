@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState({ value: '', image: '' });
+  const [data, setData] = useState({ value: '', matplotlib_image: '', bokeh_image: '' });
+
 
   useEffect(() => {
     fetch('/data/data.json', {
@@ -24,7 +25,7 @@ function App() {
 
         <p>{data.value}</p>
         {/* Update the image src to point to the public URL */}
-        <img src={`${process.env.PUBLIC_URL}/data/images/${data.image}`} alt="Display"   className="responsive-image"/> 
+        <img src={`${process.env.PUBLIC_URL}/data/images/${data.matplotlib_image}`} alt="Display"   className="responsive-image"/> 
       </header>
     </div>
   );
