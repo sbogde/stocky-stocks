@@ -1,27 +1,29 @@
 import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import data from './data.json';
-import image from './placeholder.png'; 
 
 function App() {
+  const [data, setData] = useState({ value: '' });
+
+  useEffect(() => {
+    fetch('/data/data.json', {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
+      .then((response) => response.json())
+      .then((jsonData) => setData(jsonData));
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-        
+
         <p>{data.value}</p>
-        <img src={image} alt="Display" />
+        {/* Update the image src to point to the public URL */}
+        <img src={`${process.env.PUBLIC_URL}/data/placeholder.png`} alt="Display" />
       </header>
     </div>
   );
