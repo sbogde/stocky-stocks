@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   const [data, setData] = useState({ value: '', matplotlib_image: '', bokeh_image: '' });
-  const [showBokeh, setShowBokeh] = useState(false); 
+  const [showBokeh, setShowBokeh] = useState(true); 
 
   function toggleChart() {
     setShowBokeh(!showBokeh); 
