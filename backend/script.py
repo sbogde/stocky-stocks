@@ -13,6 +13,18 @@ from bokeh.models import DatetimeTickFormatter
 from datetime import datetime, timedelta
 
 
+
+def load_symbol_from_json():
+    json_file_path = os.path.join('public', 'data', 'data.json')
+    try:
+        with open(json_file_path, 'r') as file:
+            data = json.load(file)
+            return data.get('symbol', 'TEST')  # Default to 'TEST' if not found
+    except FileNotFoundError:
+        print("data.json file not found, defaulting to 'TEST'")
+        return 'TEST'
+
+
 def save_bokeh_stock_chart(prices, dates, value, filename="bokeh_stock_chart.html"):
     """Save the stock prices chart as an interactive Bokeh plot, with dates on the x-axis."""
     # Convert string dates to datetime objects
@@ -84,7 +96,7 @@ def git_commit_and_push():
     run_git_command(["push"])
 
 
-def fetch_stock_prices(symbol="COST"):
+def fetch_stock_prices(symbol):
     try:
         # Calculate dates for the last 35 days
         end_date = datetime.now()
@@ -102,22 +114,32 @@ def fetch_stock_prices(symbol="COST"):
             return [], []
         
         # Save to CSV
-        csv_filename = os.path.join('public', 'data', 'csvs', f"{symbol}.csv")
+        # csv_filename = os.path.join('public', 'data', 'csvs', f"{symbol}.csv")
         # stock_data_csv.index = stock_data_csv.index.date  
 
-        stock_data.reset_index(inplace=True)
-        stock_data['Close'] = stock_data['Close'].round(2)  # Round the 'Close' prices to 2 decimals
+        # stock_data.reset_index(inplace=True)
+        # stock_data['Close'] = stock_data['Close'].round(2)  # Round the 'Close' prices to 2 decimals
         
         # Ensure the DataFrame contains only 'Date' and 'Close' columns for the CSV
-        stock_data_csv = stock_data[['Date', 'Close']]
+        # stock_data_csv = stock_data[['Date', 'Close']]
         
         # Save to CSV with only 'Date' and 'Close', no index
-        stock_data_csv.to_csv(csv_filename, index=False)
+        # stock_data_csv.to_csv(csv_filename, index=False)
+        
+        # Extract dates and 'Close' prices
+        # dates = stock_data.index.tolist()
+        # prices = stock_data['Close'].tolist()
+
+        # //////////////////////////////////////////////////////////////////////////////////
         
         # Extract dates and 'Close' prices
         dates = stock_data.index.tolist()
         prices = stock_data['Close'].tolist()
         
+
+        # //////////////////////////////////////////////////////////////////////////////////
+
+
         return prices, dates
     
     except Exception as e:
@@ -172,11 +194,12 @@ def update_json_value(image_filename, value, key):
 if __name__ == "__main__":
     # Generate unique filenames for both charts
     timestamp_str = get_formatted_timestamp()
-    matplotlib_filename = f"random_stock_chart_{timestamp_str}.png"
+    matplotlib_filename = f"matplot_stock_chart_{timestamp_str}.png"
     bokeh_filename = f"bokeh_stock_chart_{timestamp_str}.html"
     
     # Fetch stock prices
-    prices, dates = fetch_stock_prices()
+    symbol = load_symbol_from_json()
+    prices, dates = fetch_stock_prices(symbol)
     random_value = round(random.uniform(min(prices) * 0.9, max(prices) * 1.1), 2)
     
     # Generate and save the matplotlib chart

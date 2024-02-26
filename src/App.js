@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState({ value: '', matplotlib_image: '', bokeh_image: '' });
+  const [data, setData] = useState({ symbol: '', value: '', matplotlib_image: '', bokeh_image: '' });
   const [showBokeh, setShowBokeh] = useState(true); 
 
   function toggleChart() {
@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="logo">Stocky Stocks</div>
+        <div className="logo">Stocky Stocks ({data.symbol})</div>
         <p>{data.value}</p>
         <button onClick={toggleChart}>
           Show {showBokeh ? 'Matplotlib Image' : 'Bokeh Chart'}

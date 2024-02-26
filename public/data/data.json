@@ -1,5 +1,6 @@
 {
-    "value": "739.8",
-    "matplotlib_image": "random_stock_chart_20240225-115534.png",
-    "bokeh_image": "bokeh_stock_chart_20240225-115534.html"
+    "symbol": "F",
+    "value": "14.55",
+    "matplotlib_image": "matplot_stock_chart_20240226-145514.png",
+    "bokeh_image": "bokeh_stock_chart_20240226-145514.html"
 }
