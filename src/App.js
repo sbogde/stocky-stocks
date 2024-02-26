@@ -1,4 +1,4 @@
-// import logo from './logo.svg';
+import logo from './logo.png';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -24,6 +24,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
         <div className="logo">Stocky Stocks ({data.symbol})</div>
         <p>{data.value} - {data.symbol && (
           <a href={`${process.env.PUBLIC_URL}/data/csvs/${data.symbol}.csv`} download={`${data.symbol}.csv`}>
