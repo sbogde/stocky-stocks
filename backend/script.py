@@ -1,4 +1,9 @@
 # /backend/script.py
+import warnings
+
+# Suppress future warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 from libs.charts.charts_bokeh import save_bokeh_stock_chart
 from libs.charts.charts_matplotlib import save_stock_chart
 from libs.data.data_ops import load_symbol_from_json, fetch_stock_prices, update_json_value
@@ -8,8 +13,7 @@ import os
 import random
 
 
-
-if __name__ == "__main__":
+def main():
     # Generate unique filenames for both charts
     timestamp_str = get_formatted_timestamp()
     matplotlib_filename = f"matplot_stock_chart_{timestamp_str}.png"
@@ -33,5 +37,8 @@ if __name__ == "__main__":
     update_json_value(bokeh_filename, random_value, 'bokeh_image')
 
     # Call the function to commit and push changes
-    git_commit_and_push()
+    # git_commit_and_push()
 
+
+if __name__ == "__main__":
+    main()
