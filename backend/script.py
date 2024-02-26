@@ -33,5 +33,5 @@ if __name__ == "__main__":
     update_json_value(bokeh_filename, random_value, 'bokeh_image')
 
     # Call the function to commit and push changes
-    # git_commit_and_push()
+    git_commit_and_push()
 
