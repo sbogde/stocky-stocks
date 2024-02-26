@@ -25,7 +25,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="logo">Stocky Stocks ({data.symbol})</div>
-        <p>{data.value}</p>
+        <p>{data.value} - {data.symbol && (
+          <a href={`${process.env.PUBLIC_URL}/data/csvs/${data.symbol}.csv`} download={`${data.symbol}.csv`}>
+            Download {data.symbol} Stock Data CSV
+          </a>
+        )}</p>
         <button onClick={toggleChart}>
           Show {showBokeh ? 'Matplotlib Image' : 'Bokeh Chart'}
         </button>

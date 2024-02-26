@@ -110,38 +110,30 @@ def fetch_stock_prices(symbol):
         stock_data = yf.download(symbol, start=start_date_str, end=end_date_str)
         
         if stock_data.empty:
-            print("No data found for symbol:", symbol)
+            print(f"No data found for symbol: {symbol}")
             return [], []
         
-        # Save to CSV
-        # csv_filename = os.path.join('public', 'data', 'csvs', f"{symbol}.csv")
-        # stock_data_csv.index = stock_data_csv.index.date  
-
-        # stock_data.reset_index(inplace=True)
-        # stock_data['Close'] = stock_data['Close'].round(2)  # Round the 'Close' prices to 2 decimals
+        # Reset the index to convert 'Date' from index to a column
+        stock_data.reset_index(inplace=True)
         
-        # Ensure the DataFrame contains only 'Date' and 'Close' columns for the CSV
-        # stock_data_csv = stock_data[['Date', 'Close']]
+        # Round the 'Close' prices to 2 decimals
+        stock_data['Close'] = stock_data['Close'].round(2)
+        
+        # Prepare the CSV file path
+        csv_directory = os.path.join('public', 'data', 'csvs')
+        os.makedirs(csv_directory, exist_ok=True)  # Ensure the directory exists
+        csv_filename = os.path.join(csv_directory, f"{symbol}.csv")
         
         # Save to CSV with only 'Date' and 'Close', no index
-        # stock_data_csv.to_csv(csv_filename, index=False)
+        stock_data[['Date', 'Close']].to_csv(csv_filename, index=False)
         
-        # Extract dates and 'Close' prices
-        # dates = stock_data.index.tolist()
-        # prices = stock_data['Close'].tolist()
-
-        # //////////////////////////////////////////////////////////////////////////////////
-        
-        # Extract dates and 'Close' prices
-        dates = stock_data.index.tolist()
+        # Extract dates as strings and 'Close' prices for plotting
+        dates = stock_data['Date'].dt.strftime('%Y-%m-%d').tolist()
         prices = stock_data['Close'].tolist()
-        
-
-        # //////////////////////////////////////////////////////////////////////////////////
-
 
         return prices, dates
-    
+
+
     except Exception as e:
         print(f"Error fetching data for symbol {symbol}: {e}")
         return []
@@ -151,24 +143,18 @@ def fetch_stock_prices(symbol):
 def save_stock_chart(prices, dates, value, filename="stock_price.png"):
     plt.figure(figsize=(10, 6))
     
-    # Convert Timestamp to string if needed
-    dates = [date.strftime('%Y-%m-%d') for date in dates]
-    
-    # Plot the stock prices with dates on the X-axis
-    # plt.plot(dates, prices, label='Stock Price', marker='o', linestyle='-')
+    # Since 'dates' are already strings, no need to format them again
+    # dates = [date.strftime('%Y-%m-%d') for date in dates]  # This line is now unnecessary
+
     plt.plot(dates, prices, label='Stock Price', marker='.', linestyle='-', markersize=5)
 
-    # Mark the random value with a red circle and include the value in the legend
-    midpoint = len(prices) // 2  
-    # plt.plot(midpoint, value, 'ro', label=f'Value: {value}')  # Using an f-string for dynamic label
-    value_date = dates[midpoint]  # Or the specific date for the value
-    plt.plot(value_date, value, 'ro', label=f'Value: {value}', markersize=8)  # Smaller red circle
+    midpoint = len(prices) // 2
+    value_date = dates[midpoint]  # Directly use 'dates' since they're already formatted
+    plt.plot(value_date, value, 'ro', label=f'Value: {value}', markersize=8)
 
-    
-    # Format the X-axis to display dates better
-    plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=60))  # Adjust interval as needed
+    plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=60))
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%d.%m'))
-    plt.gcf().autofmt_xdate()  # Auto-format the dates
+    plt.gcf().autofmt_xdate()
 
     plt.title("Stock Price")
     plt.xlabel("Date")
