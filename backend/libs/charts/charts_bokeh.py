@@ -1,8 +1,8 @@
 # /backend/libs/charts/charts_bokeh.py
 from bokeh.plotting import figure, output_file, save
 from bokeh.models import ColumnDataSource, HoverTool, DatetimeTickFormatter
+from datetime import timedelta
 import pandas as pd
-
 
 def save_bokeh_stock_chart(prices, dates, value, filename="bokeh_stock_chart.html"):
     """Save the stock prices chart as an interactive Bokeh plot, with dates on the x-axis."""
@@ -19,10 +19,11 @@ def save_bokeh_stock_chart(prices, dates, value, filename="bokeh_stock_chart.htm
     # Add a line renderer with legend and line thickness
     p.line(x='date', y='price', source=source, legend_label="Stock Price", line_width=2)
     
-    # Add a circle renderer for the random value point
-    midpoint_index = len(prices) // 2
-    midpoint_date = dates_dt[midpoint_index]
-    p.circle(midpoint_date, value, size=7, color="red", legend_label=f"Value: {value}")
+   
+    # Predicted value should be placed one day after the last date in the dataset
+    predicted_date = dates_dt[-1] + timedelta(days=1)
+    p.circle(predicted_date, value, size=7, color="red", legend_label=f"Predicted Value: {value}")
+
 
     # Customize the x-axis date formatting
     p.xaxis.formatter=DatetimeTickFormatter(
@@ -38,10 +39,13 @@ def save_bokeh_stock_chart(prices, dates, value, filename="bokeh_stock_chart.htm
             ("Date", "@date{%F}")
         ],
         formatters={
-            '@date': 'datetime',  # use 'datetime' formatter for '@date' field
+            '@date': 'datetime',
         },
         mode='vline'
     ))
+    
+    # Move the legend to the top left
+    p.legend.location = "top_left"
     
     # Save the plot as an HTML file
     output_file(filename)
