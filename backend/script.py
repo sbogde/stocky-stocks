@@ -23,7 +23,7 @@ def main():
     # Fetch stock prices
     symbol = load_symbol_from_json()
     prices, dates = fetch_stock_prices(symbol)
-    # random_value = round(random.uniform(min(prices) * 0.9, max(prices) * 1.1), 2)
+    last_date = dates[-1]  # The last date from the fetched stock prices
 
     # Use ARIMA to forecast the next value instead of using a random value
     forecasted_value = forecast_with_arima(prices)
@@ -33,16 +33,16 @@ def main():
     save_stock_chart(prices, dates, forecasted_value, os.path.join('public', 'data', 'images', matplotlib_filename))
     
     # Update data.json with matplotlib chart info
-    update_json_value(matplotlib_filename, forecasted_value, 'matplotlib_image')
+    update_json_value(last_date, matplotlib_filename, forecasted_value, 'matplotlib_image')
     
     # Generate and save the Bokeh chart
     save_bokeh_stock_chart(prices, dates, forecasted_value, os.path.join('public', 'data', 'images', bokeh_filename))
 
     # Update data.json with Bokeh chart info (under a different key)
-    update_json_value(bokeh_filename, forecasted_value, 'bokeh_image')
+    update_json_value(last_date, bokeh_filename, forecasted_value, 'bokeh_image')
 
     # Call the function to commit and push changes
-    git_commit_and_push()
+    # git_commit_and_push()
 
 
 if __name__ == "__main__":
