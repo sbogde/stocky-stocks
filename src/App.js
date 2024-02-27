@@ -45,6 +45,7 @@ function App() {
         ...historicalData[currentIndex],
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, historicalData]);
 
   const goToNextDay = () => {
