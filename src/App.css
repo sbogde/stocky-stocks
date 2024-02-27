@@ -12,13 +12,12 @@
 }
 
 object {
-  display: block;  
-  margin: 0 auto;  
-  height: 500px;  
-  width: 90%; 
+  display: block;
+  margin: 0 auto;
+  height: 500px;
+  width: 90%;
   /* border: 1px solid red; */
 }
-
 
 .App {
   text-align: center;
@@ -44,6 +43,21 @@ object {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.button-show {
+  align-self: center;
+}
+
+.invisible-button {
+  visibility: hidden;
 }
 
 .App-link {

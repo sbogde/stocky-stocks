@@ -1,50 +1,108 @@
-import logo from './logo.png';
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import logo from "./logo.png";
 
 function App() {
-  const [data, setData] = useState({ symbol: '', value: '', matplotlib_image: '', bokeh_image: '' });
-  const [showBokeh, setShowBokeh] = useState(true); 
+  const [historicalData, setHistoricalData] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentData, setCurrentData] = useState({
+    symbol: "",
+    value: "",
+    matplotlib_image: "",
+    bokeh_image: "",
+  });
+  const [showBokeh, setShowBokeh] = useState(true);
 
   function toggleChart() {
-    setShowBokeh(!showBokeh); 
+    setShowBokeh(!showBokeh);
   }
-  
+
   useEffect(() => {
-    fetch('/data/data.json', {
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
+    fetch("/data/data.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
     })
       .then((response) => response.json())
-      .then((jsonData) => setData(jsonData));
+      .then((jsonData) => {
+        setHistoricalData(jsonData.historical_data);
+        setCurrentData({
+          symbol: jsonData.symbol,
+          ...jsonData.historical_data[0],
+        });
+      });
   }, []);
+
+  useEffect(() => {
+    if (
+      historicalData.length > 0 &&
+      currentIndex >= 0 &&
+      currentIndex < historicalData.length
+    ) {
+      setCurrentData({
+        symbol: currentData.symbol, // keep the symbol unchanged
+        ...historicalData[currentIndex],
+      });
+    }
+  }, [currentIndex, historicalData]);
+
+  const goToNextDay = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const goToPreviousDay = () => {
+    if (currentIndex < historicalData.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <div className="logo">Stocky Stocks ({data.symbol})</div>
-        <p>{data.value} - {data.symbol && (
-          <a href={`${process.env.PUBLIC_URL}/data/csvs/${data.symbol}.csv`} download={`${data.symbol}.csv`}>
-            Download {data.symbol} Stock Data CSV
-          </a>
-        )}</p>
-        <button onClick={toggleChart}>
-          Show {showBokeh ? 'Matplotlib Image' : 'Bokeh Chart'}
-        </button>
+        <div className="logo">Stocky Stocks ({currentData.symbol})</div>
+        <p>
+          {currentData.value} - {currentData.date}
+        </p>
+
+        <div className="buttons-container">
+          {currentIndex < historicalData.length - 1 ? (
+            <button onClick={goToPreviousDay}>Previous Day</button>
+          ) : (
+            // Disabled button instead of invisible
+            <button disabled>Previous Day</button>
+          )}
+          <button onClick={toggleChart} className="button-show">
+            Show {showBokeh ? "Matplotlib Image" : "Bokeh Chart"}
+          </button>
+          {currentIndex > 0 ? (
+            <button onClick={goToNextDay}>Next Day</button>
+          ) : (
+            // Disabled button instead of invisible
+            <button disabled>Next Day</button>
+          )}
+        </div>
+
         {showBokeh ? (
           <object
-            data={`${process.env.PUBLIC_URL}/data/images/${data.bokeh_image}`}
+            data={`${process.env.PUBLIC_URL}/data/images/${currentData.bokeh_image}`}
             type="text/html"
-            style={{ width: "100%", height: "500px", display: "block", margin: "0 auto" }}
-            aria-label="Interactive Bokeh chart displaying stock price data">
-              <p>Interactive Bokeh chart not supported by your browser.</p>
+            style={{
+              width: "100%",
+              height: "500px",
+              display: "block",
+              margin: "0 auto",
+            }}
+            aria-label="Interactive Bokeh chart displaying stock price data"
+          >
+            <p>Interactive Bokeh chart not supported by your browser.</p>
           </object>
         ) : (
           <img
-            src={`${process.env.PUBLIC_URL}/data/images/${data.matplotlib_image}`}
+            src={`${process.env.PUBLIC_URL}/data/images/${currentData.matplotlib_image}`}
             alt="Matplotlib Display"
             className="responsive-image"
           />
@@ -52,7 +110,6 @@ function App() {
       </header>
     </div>
   );
-  
 }
 
 export default App;
