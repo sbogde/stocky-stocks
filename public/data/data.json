@@ -3,9 +3,9 @@
   "historical_data": [
     {
       "date": "2024-02-27",
-      "value": "251.03",
-      "matplotlib_image": "matplot_stock_chart_20240227-173639.png",
-      "bokeh_image": "bokeh_stock_chart_20240227-173639.html"
+      "value": "255.05",
+      "matplotlib_image": "matplot_stock_chart_20240228-100318.png",
+      "bokeh_image": "bokeh_stock_chart_20240228-100318.html"
     },
     {
       "date": "2024-02-26",
