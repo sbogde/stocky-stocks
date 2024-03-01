@@ -42,7 +42,7 @@ def main():
     update_json_value(last_date, bokeh_filename, forecasted_value, 'bokeh_image')
 
     # Call the function to commit and push changes
-    # git_commit_and_push()
+    git_commit_and_push()
 
 
 if __name__ == "__main__":
