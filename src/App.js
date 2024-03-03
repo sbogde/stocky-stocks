@@ -12,9 +12,16 @@ function App() {
     bokeh_image: "",
   });
   const [showBokeh, setShowBokeh] = useState(true);
+  const [isBokehLoading, setIsBokehLoading] = useState(true);
 
   function toggleChart() {
     setShowBokeh(!showBokeh);
+
+    // Reset loading state every time we toggle the chart type - for testing purposes only
+    // setIsBokehLoading(true);
+    // setTimeout(() => {
+    //   setIsBokehLoading(false);
+    // }, 2000);
   }
 
   useEffect(() => {
@@ -88,19 +95,23 @@ function App() {
         </div>
 
         {showBokeh ? (
-          <object
-            data={`${process.env.PUBLIC_URL}/data/images/${currentData.bokeh_image}`}
-            type="text/html"
-            style={{
-              width: "100%",
-              height: "500px",
-              display: "block",
-              margin: "0 auto",
-            }}
-            aria-label="Interactive Bokeh chart displaying stock price data"
-          >
-            <p>Interactive Bokeh chart not supported by your browser.</p>
-          </object>
+          <>
+            {isBokehLoading && <div>Loading chart...</div>}
+            <object
+              data={`${process.env.PUBLIC_URL}/data/images/${currentData.bokeh_image}`}
+              type="text/html"
+              style={{
+                width: "100%",
+                height: "500px",
+                display: "block",
+                margin: "0 auto",
+              }}
+              aria-label="Interactive Bokeh chart displaying stock price data"
+              onLoad={() => setIsBokehLoading(false)}
+            >
+              <p>Interactive Bokeh chart not supported by your browser.</p>
+            </object>
+          </>
         ) : (
           <img
             src={`${process.env.PUBLIC_URL}/data/images/${currentData.matplotlib_image}`}
