@@ -38,6 +38,14 @@ function App() {
           symbol: jsonData.symbol,
           ...jsonData.historical_data[0],
         });
+
+        // Simulate toggling after a delay
+        setTimeout(() => {
+          setShowBokeh(false);
+          setTimeout(() => {
+            setShowBokeh(true);
+          }, 200);
+        }, 200);
       });
   }, []);
 
