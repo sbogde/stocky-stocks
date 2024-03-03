@@ -11,17 +11,10 @@ function App() {
     matplotlib_image: "",
     bokeh_image: "",
   });
-  const [showBokeh, setShowBokeh] = useState(true);
-  const [isBokehLoading, setIsBokehLoading] = useState(true);
+  const [showBokeh, setShowBokeh] = useState(-1); // -1: loading, 0: Matplotlib, 1: Bokeh
 
   function toggleChart() {
-    setShowBokeh(!showBokeh);
-
-    // Reset loading state every time we toggle the chart type - for testing purposes only
-    // setIsBokehLoading(true);
-    // setTimeout(() => {
-    //   setIsBokehLoading(false);
-    // }, 2000);
+    setShowBokeh(1 - showBokeh);
   }
 
   useEffect(() => {
@@ -39,13 +32,10 @@ function App() {
           ...jsonData.historical_data[0],
         });
 
-        // Simulate toggling after a delay
+        // Transition from loading (-1) to Bokeh (1) after a delay
         setTimeout(() => {
-          setShowBokeh(false);
-          setTimeout(() => {
-            setShowBokeh(true);
-          }, 200);
-        }, 200);
+          setShowBokeh(1); // Show Bokeh chart
+        }, 1000); // Adjust delay as needed
       });
   }, []);
 
@@ -88,7 +78,6 @@ function App() {
           {currentIndex < historicalData.length - 1 ? (
             <button onClick={goToPreviousDay}>Previous Day</button>
           ) : (
-            // Disabled button instead of invisible
             <button disabled>Previous Day</button>
           )}
           <button onClick={toggleChart} className="button-show">
@@ -97,35 +86,35 @@ function App() {
           {currentIndex > 0 ? (
             <button onClick={goToNextDay}>Next Day</button>
           ) : (
-            // Disabled button instead of invisible
             <button disabled>Next Day</button>
           )}
         </div>
 
-        {showBokeh ? (
-          <>
-            {isBokehLoading && <div>Loading chart...</div>}
-            <object
-              data={`${process.env.PUBLIC_URL}/data/images/${currentData.bokeh_image}`}
-              type="text/html"
-              style={{
-                width: "100%",
-                height: "500px",
-                display: "block",
-                margin: "0 auto",
-              }}
-              aria-label="Interactive Bokeh chart displaying stock price data"
-              onLoad={() => setIsBokehLoading(false)}
-            >
-              <p>Interactive Bokeh chart not supported by your browser.</p>
-            </object>
-          </>
-        ) : (
+        {showBokeh === -1 && <div>Loading chart...</div>}
+
+        {showBokeh <= 0 && (
           <img
             src={`${process.env.PUBLIC_URL}/data/images/${currentData.matplotlib_image}`}
             alt="Matplotlib Display"
             className="responsive-image"
+            style={{ visibility: showBokeh === 0 ? "visible" : "hidden" }}
           />
+        )}
+
+        {showBokeh === 1 && (
+          <object
+            data={`${process.env.PUBLIC_URL}/data/images/${currentData.bokeh_image}`}
+            type="text/html"
+            style={{
+              width: "100%",
+              height: "500px",
+              display: "block",
+              margin: "0 auto",
+            }}
+            aria-label="Interactive Bokeh chart displaying stock price data"
+          >
+            <p>Interactive Bokeh chart not supported by your browser.</p>
+          </object>
         )}
       </header>
     </div>
