@@ -54,7 +54,7 @@ function App() {
         ...historicalData[currentIndex],
       });
     }
-  }, [currentIndex, historicalData]);
+  }, [currentIndex, historicalData, currentData.symbol]);
 
   const goToNextDay = () => {
     if (currentIndex > 0) {
