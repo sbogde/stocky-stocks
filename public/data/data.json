@@ -2,6 +2,12 @@
   "symbol": "CB",
   "historical_data": [
     {
+      "date": "2024-03-05",
+      "value": "249.44",
+      "matplotlib_image": "matplot_stock_chart_20240306-201323.png",
+      "bokeh_image": "bokeh_stock_chart_20240306-201323.html"
+    },
+    {
       "date": "2024-03-04",
       "value": "248.41",
       "matplotlib_image": "matplot_stock_chart_20240305-094413.png",
