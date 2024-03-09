@@ -62,34 +62,30 @@ def fetch_stock_prices(symbol):
 
 
 
-def update_json_value(last_date, image_filename, value, image_key):
+def update_json_value(last_date, matplotlib_filename, bokeh_filename, value):
     json_file_path = os.path.join('public', 'data', 'data.json')
 
-    # Load or initialize the JSON file structure
     if os.path.exists(json_file_path):
         with open(json_file_path, 'r') as file:
             data = json.load(file)
     else:
-        data = {"symbol": "CB", "historical_data": []}  # Adjust 'CB' as needed or fetch dynamically
+        data = {"symbol": "CB", "historical_data": []}
 
-    # Check if the provided date already exists in historical_data
     existing_entry = next((entry for entry in data["historical_data"] if entry["date"] == last_date), None)
 
     if existing_entry:
-        # Update the existing entry with the new data
-        existing_entry[image_key] = image_filename
+        existing_entry["matplotlib_image"] = matplotlib_filename
+        existing_entry["bokeh_image"] = bokeh_filename
         existing_entry["value"] = str(value)
     else:
-        # Create a new entry for the provided date
         new_entry = {
             "date": last_date,
             "value": str(value),
-            image_key: image_filename
+            "matplotlib_image": matplotlib_filename,
+            "bokeh_image": bokeh_filename
         }
-        # Add the new entry to the start of the historical_data list
         data["historical_data"].insert(0, new_entry)
 
-    # Write the updated data back to the file
     with open(json_file_path, 'w') as file:
-        json.dump(data, file, indent=2)
+        json.dump(data, file, indent=4)
 

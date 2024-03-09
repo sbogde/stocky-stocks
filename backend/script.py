@@ -32,14 +32,12 @@ def main():
     # Generate and save the matplotlib chart
     save_stock_chart(prices, dates, forecasted_value, os.path.join('public', 'data', 'images', matplotlib_filename))
     
-    # Update data.json with matplotlib chart info
-    update_json_value(last_date, matplotlib_filename, forecasted_value, 'matplotlib_image')
-    
     # Generate and save the Bokeh chart
     save_bokeh_stock_chart(prices, dates, forecasted_value, os.path.join('public', 'data', 'images', bokeh_filename))
 
-    # Update data.json with Bokeh chart info (under a different key)
-    update_json_value(last_date, bokeh_filename, forecasted_value, 'bokeh_image')
+    # Update data.json with matplotlib & Bokeh charts
+    update_json_value(last_date, matplotlib_filename, bokeh_filename, forecasted_value)
+
 
     # Call the function to commit and push changes
     # git_commit_and_push()
