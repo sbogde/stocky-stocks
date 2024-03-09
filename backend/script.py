@@ -4,8 +4,8 @@ import warnings
 # Suppress future warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-from libs.charts.charts_bokeh import save_bokeh_stock_chart
-from libs.charts.charts_matplotlib import save_stock_chart
+from libs.charts.chart_factory import generate_charts
+
 from libs.data.data_ops import load_symbol_from_json, fetch_stock_prices, update_json_value
 from libs.git.git_ops import git_commit_and_push
 from libs.misc.misc import get_formatted_timestamp
@@ -29,12 +29,10 @@ def main():
     forecasted_value = forecast_with_arima(prices)
     print(f"Forecasted value: {forecasted_value}")
     
-    # Generate and save the matplotlib chart
-    save_stock_chart(prices, dates, forecasted_value, os.path.join('public', 'data', 'images', matplotlib_filename))
+    matplotlib_filepath = os.path.join('public', 'data', 'images', matplotlib_filename)
+    bokeh_filepath = os.path.join('public', 'data', 'images', bokeh_filename)
+    generate_charts(prices, dates, forecasted_value, matplotlib_filepath, bokeh_filepath)
     
-    # Generate and save the Bokeh chart
-    save_bokeh_stock_chart(prices, dates, forecasted_value, os.path.join('public', 'data', 'images', bokeh_filename))
-
     # Update data.json with matplotlib & Bokeh charts
     update_json_value(last_date, matplotlib_filename, bokeh_filename, forecasted_value)
 
