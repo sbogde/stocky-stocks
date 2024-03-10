@@ -4,8 +4,8 @@ import warnings
 # Suppress future warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
+import argparse
 from libs.charts.chart_factory import generate_charts
-
 from libs.data.data_ops import load_symbol_from_json, fetch_stock_prices, update_json_value
 from libs.git.git_ops import git_commit_and_push
 from libs.misc.misc import get_formatted_timestamp
@@ -15,7 +15,7 @@ import os
 import random
 
 
-def main():
+def main(start_date=None, end_date=None):
     # Generate unique filenames for both models' charts
     timestamp_str = get_formatted_timestamp()
     matplotlib_filename_arima = f"matplot_arima_chart_{timestamp_str}.png"
@@ -57,4 +57,9 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description='Fetch stock data and generate forecasts.')
+    parser.add_argument('--start-date', help='Start date in YYYY-MM-DD format', default=None)
+    parser.add_argument('--end-date', help='End date in YYYY-MM-DD format', default=None)
+    args = parser.parse_args()
+
+    main(start_date=args.start_date, end_date=args.end_date)

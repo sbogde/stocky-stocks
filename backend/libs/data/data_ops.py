@@ -17,17 +17,23 @@ def load_symbol_from_json():
     
 
 
-def fetch_stock_prices(symbol):
-    try:
-        # Calculate dates for the last 35 days
+def fetch_stock_prices(symbol, start_date=None, end_date=None):
+    # Use default dates if none are provided
+    if end_date is None:
         end_date = datetime.now()
-        start_date = end_date - timedelta(days=365)
-        
-        # Format dates in YYYY-MM-DD format
-        start_date_str = start_date.strftime('%Y-%m-%d')
-        end_date_str = end_date.strftime('%Y-%m-%d')
+    else:
+        end_date = datetime.strptime(end_date, '%Y-%m-%d')
 
-        # Fetch the stock data
+    if start_date is None:
+        start_date = end_date - timedelta(days=365)
+    else:
+        start_date = datetime.strptime(start_date, '%Y-%m-%d')
+
+    # Format dates in YYYY-MM-DD format
+    start_date_str = start_date.strftime('%Y-%m-%d')
+    end_date_str = end_date.strftime('%Y-%m-%d')
+    
+    try:
         stock_data = yf.download(symbol, start=start_date_str, end=end_date_str)
         
         if stock_data.empty:
