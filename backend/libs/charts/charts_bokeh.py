@@ -8,6 +8,8 @@ def save_bokeh_stock_chart(prices, dates, value, filename="bokeh_stock_chart.htm
     """Save the stock prices chart as an interactive Bokeh plot, with dates on the x-axis."""
     # Convert string dates to datetime objects
     dates_dt = pd.to_datetime(dates)
+
+    model_type = "LSTM" if "_lstm_" in filename else "ARIMA"
     
     # Prepare data
     source = ColumnDataSource(data=dict(date=dates_dt, price=prices))
@@ -22,7 +24,7 @@ def save_bokeh_stock_chart(prices, dates, value, filename="bokeh_stock_chart.htm
    
     # Predicted value should be placed one day after the last date in the dataset
     predicted_date = dates_dt[-1] + timedelta(days=1)
-    p.circle(predicted_date, value, size=7, color="red", legend_label=f"Predicted Value: {value}")
+    p.circle(predicted_date, value, size=7, color="red", legend_label=f"Predicted Value with {model_type}: {value}")
 
 
     # Customize the x-axis date formatting

@@ -11,6 +11,9 @@ def generate_charts(prices, dates, forecasted_value, matplotlib_filename, bokeh_
     :param matplotlib_filename: Filename for the Matplotlib chart.
     :param bokeh_filename: Filename for the Bokeh chart.
     """
+
+    forecasted_value = round(forecasted_value, 2)
+
     # Generate and save the matplotlib chart
     save_matplotlib_chart(prices, dates, forecasted_value, matplotlib_filename)
     

@@ -5,6 +5,9 @@ import pandas as pd  # Ensure pandas is imported
 
 def save_stock_chart(prices, dates, value, filename="stock_price.png"):
     plt.figure(figsize=(10, 6))
+
+    model_type = "LSTM" if "_lstm_" in filename else "ARIMA"
+
     
     # Ensure 'dates' are datetime objects
     dates_dt = [pd.to_datetime(date) for date in dates]
@@ -18,7 +21,7 @@ def save_stock_chart(prices, dates, value, filename="stock_price.png"):
     predicted_date = dates_dt[-1] + timedelta(days=1)
     mpl_predicted_date = mdates.date2num(predicted_date)  # Convert to Matplotlib date format
     
-    plt.plot(mpl_predicted_date, value, 'ro', label=f'Predicted Value: {value}', markersize=8)
+    plt.plot(mpl_predicted_date, value, 'ro', label=f'Predicted Value with {model_type}: {value}', markersize=8)
     
     plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=60))
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%d.%m'))
