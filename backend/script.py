@@ -25,7 +25,8 @@ def main(start_date=None, end_date=None):
     
     # Fetch stock prices
     symbol = load_symbol_from_json()
-    prices, dates = fetch_stock_prices(symbol)
+    
+    prices, dates = fetch_stock_prices(symbol, start_date=start_date, end_date=end_date)
     last_date = dates[-1]  # The last date from the fetched stock prices
 
     # Forecast with ARIMA and LSTM

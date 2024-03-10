@@ -7,6 +7,7 @@ def save_stock_chart(prices, dates, value, filename="stock_price.png"):
     plt.figure(figsize=(10, 6))
 
     model_type = "LSTM" if "_lstm_" in filename else "ARIMA"
+    value = round(value, 2)
 
     
     # Ensure 'dates' are datetime objects
