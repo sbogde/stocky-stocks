@@ -23,11 +23,11 @@
         {
             "date": "2024-03-06",
             "value_arima": "250.51",
-            "matplotlib_image_arima": "matplot_arima_chart_20240307-151124.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240307-151124.html",
-            "value_lstm": "352.23",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240307-151124.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240307-151124.html"
+            "matplotlib_image_arima": "matplot_arima_chart_20240310-140252.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240310-140252.html",
+            "value_lstm": "398.51",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240310-140252.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240310-140252.html"
         },
         {
             "date": "2024-03-05",
