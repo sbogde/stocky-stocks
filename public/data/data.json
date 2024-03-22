@@ -1,5 +1,5 @@
 {
-    "symbol": "CB",
+    "symbol": "SBUX",
     "historical_data": [
         {
             "date": "2024-03-08",
@@ -94,12 +94,12 @@
         },
         {
             "date": "2024-02-23",
-            "value_arima": "256.23",
-            "matplotlib_image_arima": "matplot_arima_chart_20240312-125456.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240312-125456.html",
-            "value_lstm": "420.92",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240312-125456.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240312-125456.html"
+            "value_arima": "95.6",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-185354.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-185354.html",
+            "value_lstm": "145.57",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-185354.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-185354.html"
         }
     ]
 }
