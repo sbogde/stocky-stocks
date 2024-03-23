@@ -25,7 +25,7 @@ def fetch_stock_prices(symbol, start_date=None, end_date=None):
         end_date = datetime.strptime(end_date, '%Y-%m-%d')
 
     if start_date is None:
-        start_date = end_date - timedelta(days=365)
+        start_date = end_date - timedelta(days=365*5)
     else:
         start_date = datetime.strptime(start_date, '%Y-%m-%d')
 

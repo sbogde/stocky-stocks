@@ -2,104 +2,320 @@
     "symbol": "SBUX",
     "historical_data": [
         {
+            "date": "2024-03-20",
+            "value_arima": "92.65",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-202040.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-202040.html",
+            "value_lstm": "153.64",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-202040.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-202040.html"
+        },
+        {
+            "date": "2024-03-19",
+            "value_arima": "91.61",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-201921.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-201921.html",
+            "value_lstm": "137.24",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-201921.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-201921.html"
+        },
+        {
+            "date": "2024-03-18",
+            "value_arima": "91.07",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-201759.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-201759.html",
+            "value_lstm": "145.48",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-201759.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-201759.html"
+        },
+        {
+            "date": "2024-03-15",
+            "value_arima": "90.03",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-201641.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-201641.html",
+            "value_lstm": "139.68",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-201641.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-201641.html"
+        },
+        {
+            "date": "2024-03-14",
+            "value_arima": "91.67",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-201249.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-201249.html",
+            "value_lstm": "132.58",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-201249.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-201249.html"
+        },
+        {
+            "date": "2024-03-13",
+            "value_arima": "91.57",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-201127.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-201127.html",
+            "value_lstm": "134.36",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-201127.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-201127.html"
+        },
+        {
+            "date": "2024-03-12",
+            "value_arima": "92.41",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-201009.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-201009.html",
+            "value_lstm": "131.37",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-201009.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-201009.html"
+        },
+        {
+            "date": "2024-03-11",
+            "value_arima": "92.12",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-200850.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-200850.html",
+            "value_lstm": "145.81",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-200850.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-200850.html"
+        },
+        {
+            "date": "2024-02-22",
+            "value_arima": "95.81",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-194500.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-194500.html",
+            "value_lstm": "134.14",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-194500.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-194500.html"
+        },
+        {
+            "date": "2024-02-21",
+            "value_arima": "95.13",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-194348.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-194348.html",
+            "value_lstm": "145.51",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-194348.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-194348.html"
+        },
+        {
+            "date": "2024-02-20",
+            "value_arima": "93.47",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-194239.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-194239.html",
+            "value_lstm": "142.21",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-194239.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-194239.html"
+        },
+        {
+            "date": "2024-02-16",
+            "value_arima": "93.24",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-194128.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-194128.html",
+            "value_lstm": "136.96",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-194128.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-194128.html"
+        },
+        {
+            "date": "2024-02-15",
+            "value_arima": "93.15",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-193646.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-193646.html",
+            "value_lstm": "136.53",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-193646.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-193646.html"
+        },
+        {
+            "date": "2024-02-14",
+            "value_arima": "94.1",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-193535.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-193535.html",
+            "value_lstm": "138.63",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-193535.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-193535.html"
+        },
+        {
+            "date": "2024-02-13",
+            "value_arima": "93.79",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-193425.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-193425.html",
+            "value_lstm": "146.97",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-193425.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-193425.html"
+        },
+        {
+            "date": "2024-02-12",
+            "value_arima": "95.35",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-193315.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-193315.html",
+            "value_lstm": "137.83",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-193315.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-193315.html"
+        },
+        {
+            "date": "2024-02-09",
+            "value_arima": "97.34",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-193204.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-193204.html",
+            "value_lstm": "138.75",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-193204.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-193204.html"
+        },
+        {
+            "date": "2024-02-08",
+            "value_arima": "96.67",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-192832.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-192832.html",
+            "value_lstm": "132.05",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-192832.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-192832.html"
+        },
+        {
+            "date": "2024-02-07",
+            "value_arima": "95.25",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-192721.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-192721.html",
+            "value_lstm": "141.04",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-192721.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-192721.html"
+        },
+        {
+            "date": "2024-02-06",
+            "value_arima": "95.89",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-192611.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-192611.html",
+            "value_lstm": "142.87",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-192611.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-192611.html"
+        },
+        {
+            "date": "2024-02-05",
+            "value_arima": "92.48",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-192458.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-192458.html",
+            "value_lstm": "144.84",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-192458.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-192458.html"
+        },
+        {
+            "date": "2024-02-02",
+            "value_arima": "92.96",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-192347.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-192347.html",
+            "value_lstm": "140.61",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-192347.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-192347.html"
+        },
+        {
+            "date": "2024-02-01",
+            "value_arima": "93.41",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-192009.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-192009.html",
+            "value_lstm": "141.15",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-192009.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-192009.html"
+        },
+        {
+            "date": "2024-01-31",
+            "value_arima": "92.95",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-191852.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-191852.html",
+            "value_lstm": "138.97",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-191852.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-191852.html"
+        },
+        {
             "date": "2024-03-08",
-            "value_arima": "248.88",
-            "matplotlib_image_arima": "matplot_arima_chart_20240310-140511.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240310-140511.html",
-            "value_lstm": "362.0",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240310-140511.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240310-140511.html"
+            "value_arima": "91.07",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-200732.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-200732.html",
+            "value_lstm": "121.68",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-200732.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-200732.html"
         },
         {
             "date": "2024-03-07",
             "bokeh_image": "bokeh_stock_chart_20240308-214103.html",
-            "value_arima": "248.93",
-            "matplotlib_image_arima": "matplot_arima_chart_20240310-140402.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240310-140402.html",
-            "value_lstm": "361.13",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240310-140402.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240310-140402.html"
+            "value_arima": "90.91",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-200336.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-200336.html",
+            "value_lstm": "149.79",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-200336.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-200336.html"
         },
         {
             "date": "2024-03-06",
-            "value_arima": "250.51",
-            "matplotlib_image_arima": "matplot_arima_chart_20240310-140252.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240310-140252.html",
-            "value_lstm": "398.51",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240310-140252.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240310-140252.html"
+            "value_arima": "91.69",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-200218.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-200218.html",
+            "value_lstm": "141.87",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-200218.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-200218.html"
         },
         {
             "date": "2024-03-05",
-            "value_arima": "249.44",
-            "matplotlib_image_arima": "matplot_arima_chart_20240310-140142.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240310-140142.html",
-            "value_lstm": "315.33",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240310-140142.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240310-140142.html"
+            "value_arima": "91.15",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-200101.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-200101.html",
+            "value_lstm": "140.91",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-200101.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-200101.html"
         },
         {
             "date": "2024-03-04",
-            "value_arima": "248.41",
-            "matplotlib_image_arima": "matplot_arima_chart_20240310-140030.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240310-140030.html",
-            "value_lstm": "333.29",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240310-140030.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240310-140030.html"
+            "value_arima": "92.44",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-195944.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-195944.html",
+            "value_lstm": "134.83",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-195944.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-195944.html"
         },
         {
             "date": "2024-03-01",
-            "value_arima": "250.73",
-            "matplotlib_image_arima": "matplot_arima_chart_20240310-135919.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240310-135919.html",
-            "value_lstm": "315.83",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240310-135919.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240310-135919.html"
+            "value_arima": "93.04",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-195825.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-195825.html",
+            "value_lstm": "135.3",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-195825.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-195825.html"
         },
         {
             "date": "2024-02-29",
-            "value_arima": "251.79",
-            "matplotlib_image_arima": "matplot_arima_chart_20240310-135550.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240310-135550.html",
-            "value_lstm": "314.8",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240310-135550.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240310-135550.html"
+            "value_arima": "95.04",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-195402.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-195402.html",
+            "value_lstm": "141.37",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-195402.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-195402.html"
         },
         {
             "date": "2024-02-28",
-            "value_arima": "253.64",
-            "matplotlib_image_arima": "matplot_arima_chart_20240310-135435.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240310-135435.html",
-            "value_lstm": "355.85",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240310-135435.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240310-135435.html"
+            "value_arima": "92.92",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-195204.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-195204.html",
+            "value_lstm": "139.33",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-195204.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-195204.html"
         },
         {
             "date": "2024-02-27",
-            "value_arima": "255.05",
-            "matplotlib_image_arima": "matplot_arima_chart_20240310-135318.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240310-135318.html",
-            "value_lstm": "308.01",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240310-135318.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240310-135318.html"
+            "value_arima": "94.14",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-195052.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-195052.html",
+            "value_lstm": "125.96",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-195052.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-195052.html"
         },
         {
             "date": "2024-02-26",
-            "value_arima": "255.03",
-            "matplotlib_image_arima": "matplot_arima_chart_20240312-125612.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240312-125612.html",
-            "value_lstm": "375.98",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240312-125612.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240312-125612.html"
+            "value_arima": "94.19",
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-194941.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-194941.html",
+            "value_lstm": "133.44",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-194941.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-194941.html"
         },
         {
             "date": "2024-02-23",
             "value_arima": "95.6",
-            "matplotlib_image_arima": "matplot_arima_chart_20240322-185354.png",
-            "bokeh_image_arima": "bokeh_arima_chart_20240322-185354.html",
-            "value_lstm": "145.57",
-            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-185354.png",
-            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-185354.html"
+            "matplotlib_image_arima": "matplot_arima_chart_20240322-194831.png",
+            "bokeh_image_arima": "bokeh_arima_chart_20240322-194831.html",
+            "value_lstm": "150.54",
+            "matplotlib_image_lstm": "matplot_lstm_chart_20240322-194831.png",
+            "bokeh_image_lstm": "bokeh_lstm_chart_20240322-194831.html"
         }
     ]
 }
