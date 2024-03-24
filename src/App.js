@@ -16,14 +16,14 @@ function App() {
     bokeh_image_lstm: "",
   });
   const [forecastModel, setForecastModel] = useState("arima"); // "arima" or "lstm"
-  const [showBokeh, setShowBokeh] = useState(true);
+  const [showBokeh, setShowBokeh] = useState(-1);
 
   function toggleForecastModel() {
     setForecastModel(forecastModel === "arima" ? "lstm" : "arima");
   }
 
   function toggleChart() {
-    setShowBokeh(!showBokeh);
+    setShowBokeh(1 - showBokeh);
   }
 
   useEffect(() => {
@@ -40,6 +40,11 @@ function App() {
           symbol: jsonData.symbol,
           ...jsonData.historical_data[0],
         });
+
+        // Transition from loading (-1) to Bokeh (1) after a delay
+        setTimeout(() => {
+          setShowBokeh(1); // show Bokeh chart
+        }, 1000);
       });
   }, []);
 
@@ -81,8 +86,10 @@ function App() {
           {currentData[getValueKey()]} on {currentData.date}
         </p>
         <div className="buttons-container">
-          {currentIndex < historicalData.length - 1 && (
+          {currentIndex < historicalData.length - 1 ? (
             <button onClick={goToPreviousDay}>Previous Day</button>
+          ) : (
+            <button disabled>Previous Day</button>
           )}
 
           <button onClick={toggleForecastModel}>
@@ -92,9 +99,14 @@ function App() {
             Show {showBokeh ? "Matplotlib Chart" : "Bokeh Chart"}
           </button>
 
-          {currentIndex > 0 && <button onClick={goToNextDay}>Next Day</button>}
+          {currentIndex > 0 ? (
+            <button onClick={goToNextDay}>Next Day</button>
+          ) : (
+            <button disabled>Next Day</button>
+          )}
         </div>
-        {showBokeh ? (
+        {showBokeh === -1 && <div>Loading chart...</div>}
+        {showBokeh === 1 && (
           <object
             data={`${process.env.PUBLIC_URL}/data/images/${
               currentData[getImageKey("bokeh_image")]
@@ -110,7 +122,8 @@ function App() {
           >
             <p>Interactive Bokeh chart not supported by your browser.</p>
           </object>
-        ) : (
+        )}{" "}
+        {!showBokeh && (
           <img
             src={`${process.env.PUBLIC_URL}/data/images/${
               currentData[getImageKey("matplotlib_image")]
